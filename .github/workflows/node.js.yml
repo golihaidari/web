@@ -26,17 +26,17 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: web/package-lock.jso
+        cache-dependency-path: DevOps/package-lock.jso
     - name: ci
-      working-directory : ./web
+      working-directory : ./DevOps
       run: npm ci
     - name: build
       run: npm run build --if-present
-      working-directory: ./web
+      working-directory: ./DevOps
     - name: test
-      working-directory: ./web
+      working-directory: ./DevOps
       run: npm test
     - name: deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
-        folder: web/build
+        folder: DevOps/build
